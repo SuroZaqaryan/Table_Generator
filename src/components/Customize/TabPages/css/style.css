@@ -1,0 +1,27 @@
+.grayscale-twitter {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.picker-wrapper {
+    display: flex;
+    padding-bottom: 0.2rem;
+}
+
+.sketch {
+    margin-right: 16px;
+}
+
+.border-grayscale > .vc-grayscale {
+    width: 115px;
+}
+
+.border-grayscale > .vc-grayscale {
+    width: 115px;
+}
+
+.border-grayscale > .vc-grayscale > ul > li {
+    width: 23px;
+    height: 24px;
+}

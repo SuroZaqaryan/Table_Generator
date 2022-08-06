@@ -1,0 +1,127 @@
+@import "./global-root.css";
+
+.show-code-container {
+    width: 100%;
+    height: 100%;
+}
+
+.GeneratedTable {
+    max-height: 300px;
+    height: 100%;
+}
+
+.generated-table-of-child {
+    position: relative;
+    overflow-x: scroll;
+}
+
+.customize-wrapper {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 44px;
+    z-index: 1;
+    background-image: repeating-linear-gradient(-13deg, var(--primary-color), var(--primary-color) 12px, transparent 12px, transparent 17px, var(--primary-color) 17px), repeating-linear-gradient(77deg, var(--primary-color), var(--primary-color) 12px, transparent 12px, transparent 17px, var(--primary-color) 17px), repeating-linear-gradient(167deg, var(--primary-color), var(--primary-color) 12px, transparent 12px, transparent 17px, var(--primary-color) 17px), repeating-linear-gradient(257deg, var(--primary-color), var(--primary-color) 12px, transparent 12px, transparent 17px, var(--primary-color) 17px);
+    background-size: 3px calc(100% + 17.45px), calc(100% + 17.45px) 3px, 3px calc(100% + 17.45px) , calc(100% + 17.45px) 3px;
+    background-position: 0 0, 0 0, 100% 0, 0 100%;
+    background-repeat: no-repeat;
+    animation: borderAnimation 0.2s infinite linear;
+}
+
+@keyframes borderAnimation {
+    from { background-position: 0 0, -17.45px 0, 100% -17.45px, 0 100%; }
+    to { background-position: 0 -17.45px, 0 0, 100% 0, -17.45px 100%; }
+}
+
+.customize-wrapper-is-child {
+    border-radius: 4px;
+    display: flex;
+    position: absolute;
+    top: -10px;
+    left: -8px;
+}
+
+.customize-block {
+    display: flex;
+    cursor: pointer;
+}
+
+.customize-block:first-child {
+    margin-right: 6px;
+}
+
+.generated-table-of-child::-webkit-scrollbar-thumb {
+    background-color: #a7a7a7;
+}
+
+.generated-table-of-child::-webkit-scrollbar {
+    height: 10px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    text-align: left;
+    padding: 8px;
+    border: 0.1px solid black;
+}
+
+.tr-expectation {
+    opacity: 0.7;
+    pointer-events: none;
+    
+}
+
+.tr-expectation > td {
+    border: 0.1px solid #aeaeae;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+table > tr > th {
+    text-align: center;
+    background-color: #d2d2a4;
+}
+
+.tab-title {
+    position: relative;
+}
+
+.get-code {
+    /* we dont use `language-` classes anymore so thats why we need to add background and text color manually */
+    background: #282c35;
+    color: #ccc;
+    /* you must provide font-family font-size line-height. Example:*/
+    font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 5px;
+    border-radius: 4px;
+    max-height: 350px;
+}
+
+.get-code::-webkit-scrollbar-thumb {
+    background: #a7a7a7;
+}
+
+.get-code::-webkit-scrollbar-track {
+    background-color: #353228;
+}
+
+/* optional class for removing the outline */
+.prism-editor__textarea:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 1100px) {
+    table {
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,69 @@
+.matrix-wrapper {
+    height: 50%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.matrix-wrapper-of-child {
+    margin-top: 2.3rem;
+}
+
+.matrix-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    max-width: 100%;
+}
+
+.hero-image:nth-child(odd) > .active:nth-child(odd) {
+    background-color: rgb(21, 158, 55) !important;
+}
+
+.hero-image:nth-child(odd) > .active:nth-child(even) {
+    background-color: rgb(200, 178, 200) !important;
+}
+
+.hero-image:nth-child(even) > .active:nth-child(odd) {
+    background-color: rgb(148, 165, 177) !important;
+}
+
+.hero-image:nth-child(even) > .active:nth-child(even) {
+    background-color: yellow !important;
+}
+/* .active {
+    background: #7b4eff;
+}
+.active:nth-child(even) {
+    background-color: #bfabff;
+    border-radius: 4px;
+} */
+
+.active > .matrix-row:after {
+    content: "\A";
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    background: #ffffff;
+}
+
+.matrix-container {
+    padding: 0;
+    flex: 0 0 auto;
+    border: 1px solid #c2c2c2a6;
+    border-radius: 4px;
+}
+
+.hero-image {
+    display: flex;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 1100px) {
+    .matrix-row {
+        width: 3vw;
+        height: 3vw;
+    }
+  }

@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap');
+
+* {
+    font-family: 'Hind Siliguri', sans-serif;
+    letter-spacing: 0.8px;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+}
+
+#app {
+    height: 100%;
+}
+
+.matrix-table-generator {
+   height: 100%;
+}
+
+/* Draggable */
+
+.v-pane-custom {
+    height: 100%;
+}
+
+.v-pane-custom > .v-pane {
+    width: 50%;
+}
+
+.v-pane-custom > .v-pane:first-child > .v-resizer {
+    display: none;
+}
+
+.v-pane-custom > .v-pane:first-child > .content > .innerContent {
+    width: 90%;
+    margin: auto;
+}
+
+.v-pane-custom > .v-pane > .content > .innerContent {
+    height: calc(100% - 76px);
+}
+
+/* ------- */
+
+/* codemirror height */
+
+.syntax-snippet-title {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    padding: 4px 16px;
+    background-color: #1c1d24;
+}
+
+.syntax-snippet-title-icon {
+    margin-right: 8px;
+}
+
+.syntax-snippet-title > div > img {
+    display: flex;
+    max-width: 100%;
+}
+
+.syntax-snippet-title > div > h3 {
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.syntax-snippet > .vue-codemirror {
+    height: 100%;
+}
+
+.syntax-snippet > .vue-codemirror > .CodeMirror {
+    height: 100%;
+}
+
+.syntax-snippet {
+    height: 50%;
+}
+
+.syntax-snippet-css {
+    margin-top: 2.40rem;
+}
+
+/* ---------------- */
+
+.col-1 {
+    width: 9.5% !important;
+}
+
+.line {
+    border: 0;
+    height: 0;
+    margin-top: 2.6rem;
+    margin-bottom: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #20212a; 
+  }
+   
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
