@@ -92,50 +92,47 @@ export default {
   },
 
   computed: {
-    getCss() {
-      return dedent(`
-
+    getCss: {
+      get() {
+        return dedent(`
       body {
         margin: ${this.$store.state.background};
         padding: 3em 6em;
       }
-
       table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
         width: 100%;
       }
-
       td,
       th {
           text-align: left;
           padding: 8px;
           border: 0.1px solid black;
       }
-
       .tr-expectation {
           opacity: 0.7;
           pointer-events: none;
           
       }
-
       .tr-expectation > td {
           border: 0.1px solid #aeaeae;
       }
-
       tr:nth-child(even) {
           background-color: #dddddd;
       }
-
       table tr > th {
           text-align: center;
           background-color: ${this.$store.getters.style.background};
       }
-
       .tab-title {
           position: relative;
       }
   `);
+      },
+      set(newGetCSS) {
+        return newGetCSS;
+      },
     },
   },
 
