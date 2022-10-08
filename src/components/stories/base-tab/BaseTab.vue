@@ -2,8 +2,13 @@
   <div class="tab-wrapper">
     <div class="tab-custom-wrapper">
       <div class="tab">
-        <div v-for="(item, index) in tab" :key="index" @click="selectItem(index)" class="tab-article"
-          :class="{ active: index === activeItem }">
+        <div
+          v-for="(item, index) in tab"
+          :key="index"
+          @click="selectItem(index)"
+          class="tab-article"
+          :class="{ active: index === activeItem }"
+        >
           <p @click="tabActive(item.page)">{{ item.title }}</p>
         </div>
       </div>
@@ -34,7 +39,7 @@ export default {
   },
   data() {
     return {
-      activeItem: null,
+      activeItem: 0,
       activePage: null,
     };
   },

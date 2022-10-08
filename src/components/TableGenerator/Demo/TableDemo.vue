@@ -1,7 +1,11 @@
 <template>
-  <div style="background: #20212a; position: relative; height: 100%;">
-    <div v-show="false" class="generated-table-of-child" 
-    :class="{ 'tr-expectation': isCustomize }" ref="tableCode">
+  <div style="background: #20212a; position: relative; height: 100%">
+    <div
+      v-show="false"
+      class="generated-table-of-child"
+      :class="{ 'tr-expectation': isCustomize }"
+      ref="tableCode"
+    >
       <table>
         <tr>
           <th v-for="(i, index) in tableRender.x" :key="index">
@@ -23,7 +27,10 @@
       <div class="syntax-snippet">
         <div class="syntax-snippet-title">
           <div class="syntax-snippet-title-icon">
-            <img width="30" src="https://img.icons8.com/color/48/000000/html-5--v1.png" />
+            <img
+              width="30"
+              src="https://img.icons8.com/color/48/000000/html-5--v1.png"
+            />
           </div>
           <div>
             <h3>HTML</h3>
@@ -37,7 +44,10 @@
       <div class="syntax-snippet syntax-snippet-css">
         <div class="syntax-snippet-title">
           <div class="syntax-snippet-title-icon">
-            <img width="30" src="https://img.icons8.com/color/48/000000/css3.png" />
+            <img
+              width="30"
+              src="https://img.icons8.com/color/48/000000/css3.png"
+            />
           </div>
           <div>
             <h3>CSS</h3>
