@@ -6,7 +6,7 @@
         <sketch-picker v-model="status" />
       </div>
       <div class="swatches">
-        <swatches-picker v-model="$store.state.theme.background" />
+        <swatches-picker v-model="status" />
       </div>
     </div>
   </div>
@@ -26,7 +26,11 @@ export default {
         return this.$store.state.theme.background;
       },
       set(val) {
-        this.$store.commit("CHECK_ACTIVE_CONTENT", val);
+        this.$store.commit(
+          "CHECK_ACTIVE_CONTENT",
+          val,
+          this.$store.state.activeContent
+        );
       },
     },
   },
@@ -68,11 +72,11 @@ export default {
   height: 280.24px !important;
 }
 
-.swatches>.vc-swatches {
+.swatches > .vc-swatches {
   height: 307.24px !important;
 }
 
-.swatches>.vc-swatches>.vc-swatches-box {
+.swatches > .vc-swatches > .vc-swatches-box {
   padding: 10px 0px 0px 10px !important;
 }
 </style>

@@ -4,7 +4,7 @@
       <div
         v-for="(tab, index) in tabSideBar"
         :key="index"
-        @click="selectItem(index)"
+        @click="this.$store.state.activeContent = index"
         :class="{ active: index === activeItem }"
       >
         <span class="dot" />
@@ -41,17 +41,8 @@ export default {
     };
   },
 
-  methods: {
-    selectItem(i) {
-      this.activeItem = i;
-      this.$store.state.activeContent.forEach((item, index) => {
-        if (index === i) {
-          item.active = true;
-        } else {
-          item.active = false;
-        }
-      });
-    },
+  mounted() {
+    this.$store.state.activeContent = 0;
   },
 };
 </script>

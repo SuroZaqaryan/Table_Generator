@@ -91,6 +91,10 @@ export default {
     codemirror,
   },
 
+  created() {
+    console.log("333", this.$store.getters);
+  },
+
   computed: {
     getCss: {
       get() {
@@ -113,7 +117,7 @@ export default {
       .tr-expectation {
           opacity: 0.7;
           pointer-events: none;
-          
+          color: ${this.$store.getters.contentStyle.color};
       }
       .tr-expectation > td {
           border: 0.1px solid #aeaeae;
@@ -123,7 +127,8 @@ export default {
       }
       table tr > th {
           text-align: center;
-          background-color: ${this.$store.getters.style.background};
+          background-color: ${this.$store.getters.contentHeader.background};
+          color: ${this.$store.getters.contentHeader.color};
       }
       .tab-title {
           position: relative;
@@ -197,7 +202,5 @@ export default {
 };
 </script>
 
-<style src="../../style.css">
-</style>
-<style src="../../../styles/TableGenerator.css">
-</style>
+<style src="../../style.css"></style>
+<style src="../../../styles/TableGenerator.css"></style>

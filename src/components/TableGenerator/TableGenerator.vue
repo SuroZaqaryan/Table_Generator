@@ -1,8 +1,16 @@
 <template>
   <div class="GeneratedTable">
     <div style="position: relative">
-      <BaseTitle title="Demo" settings="Customize" img="https://i.ibb.co/c8mvVJm/icons8-screensharing-100.png"
-        :tableRender="tableRender" @click="showCustomizeModal" />
+      <BaseTitle
+        title="Demo"
+        settings="Customize"
+        img="https://i.ibb.co/c8mvVJm/icons8-screensharing-100.png"
+        :tableRender="tableRender"
+        @click="showCustomizeModal"
+      />
+      <p v-if="$store.state.styleHeader.background !== undefined">
+        {{ $store.state.styleHeader.background.hex }}
+      </p>
       <table>
         <div v-if="$store.state.customizeModalIsShow" class="customize-wrapper">
           <div class="customize-wrapper-is-child">
@@ -13,14 +21,22 @@
         </div>
 
         <tr>
-          <th v-for="(i, index) in tableRender.x" :key="index" :style="$store.getters.style">
+          <th
+            v-for="(i, index) in tableRender.x"
+            :key="index"
+            :style="$store.getters.contentHeader"
+          >
             {{ i.matrixX }}
             Header
             {{ $store.state.testStatus }}
           </th>
         </tr>
-        <tr :class="{ 'tr-expectation': isCustomize }" v-for="(i, index) in tableRender.y" :key="index"
-          :style="$store.getters.style">
+        <tr
+          :class="{ 'tr-expectation': isCustomize }"
+          v-for="(i, index) in tableRender.y"
+          :key="index"
+          :style="$store.getters.contentStyle"
+        >
           <td v-for="(i, index) in tableRender.x" :key="index">
             {{ i.matrixY }}
             Cell
@@ -69,7 +85,5 @@ export default {
 };
 </script>
 
-<style src="../style.css">
-</style>
-<style src="../../styles/TableGenerator.css">
-</style>
+<style src="../style.css"></style>
+<style src="../../styles/TableGenerator.css"></style>
