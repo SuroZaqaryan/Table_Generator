@@ -92,8 +92,7 @@ export default new Vuex.Store({
       state.styleHeader = { ...val };
       state.styleContent = { ...val };
     },
-    CHECK_ACTIVE_CONTENT(state, message) {
-      console.log(message);
+    TABLE_BACKGROUND(state, message) {
       switch (state.activeContent) {
         case 0:
           state.styleHeader.background = message;
@@ -105,7 +104,7 @@ export default new Vuex.Store({
           break;
       }
     },
-    CHECK_ACTIVE_TEXT(state, message) {
+    TABLE_TEXT_COLOR(state, message) {
       switch (state.activeContent) {
         case 0:
           state.styleHeader.textColor = message;

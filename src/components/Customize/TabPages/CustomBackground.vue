@@ -27,7 +27,7 @@ export default {
       },
       set(val) {
         this.$store.commit(
-          "CHECK_ACTIVE_CONTENT",
+          "TABLE_BACKGROUND",
           val,
           this.$store.state.activeContent
         );

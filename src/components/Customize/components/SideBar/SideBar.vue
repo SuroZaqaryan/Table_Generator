@@ -4,14 +4,13 @@
       <div
         v-for="(tab, index) in tabSideBar"
         :key="index"
-        @click="this.$store.state.activeContent = index"
+        @click="$store.state.activeContent = index"
         :class="{ active: index === activeItem }"
       >
         <span class="dot" />
 
         <p>{{ tab.title }}</p>
       </div>
-      <p>{{ $store.state.activeContent }}</p>
     </div>
   </div>
 </template>

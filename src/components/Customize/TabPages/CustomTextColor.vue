@@ -44,7 +44,7 @@ export default {
       },
       set(val) {
         this.$store.commit(
-          "CHECK_ACTIVE_TEXT",
+          "TABLE_TEXT_COLOR",
           val,
           this.$store.state.activeContent
         );
