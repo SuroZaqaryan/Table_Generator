@@ -2,22 +2,22 @@
   <div>
     <div class="picker-wrapper">
       <div class="sketch">
-        <sketch-picker v-model="$store.state.theme.borderColor" />
+        <sketch-picker v-model="status" />
       </div>
       <div>
-        <slider-picker v-model="$store.state.theme.borderColor" />
+        <slider-picker v-model="status" />
         <div class="grayscale-twitter">
           <div class="border-grayscale">
-            <grayscale-picker v-model="$store.state.theme.borderColor" />
+            <grayscale-picker v-model="status" />
           </div>
           <div class="border-twitter">
-            <twitter-picker v-model="$store.state.theme.borderColor" />
+            <twitter-picker v-model="status" />
           </div>
         </div>
         <hr class="line" />
         <Range
           title="Border Weight"
-          :borderWeight="this.$store.state.theme.weight.borderWeight"
+          :borderWeight="$store.state.theme.weight.borderWeight"
         />
       </div>
     </div>
@@ -35,6 +35,20 @@ export default {
     "slider-picker": Slider,
     "grayscale-picker": Grayscale,
     "twitter-picker": Twitter,
+  },
+
+  computed: {
+    status: {
+      get() {
+        return this.$store.state.theme.borderColor;
+      },
+      set(colorValue) {
+        this.$store.commit(
+          "TABLE_BACKGROUND",
+          colorValue
+        );
+      },
+    },
   },
 };
 </script>

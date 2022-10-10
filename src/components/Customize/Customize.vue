@@ -20,18 +20,22 @@ export default {
         {
           title: "Background",
           page: CustomBackground,
+          value: "Background",
         },
         {
           title: "Text Color",
           page: CustomTextColor,
+          value: "TextColor",
         },
         {
           title: "Border Color",
           page: CustomBorderColor,
+          value: "BorderColor",
         },
         {
           title: "Border Style",
           page: CustomBorderStyle,
+          value: "BorderStyle",
         },
       ],
     };

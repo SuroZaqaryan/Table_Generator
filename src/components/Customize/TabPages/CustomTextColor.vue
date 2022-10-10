@@ -36,17 +36,16 @@ export default {
     "grayscale-picker": Grayscale,
     "twitter-picker": Twitter,
   },
-  
+
   computed: {
     status: {
       get() {
         return this.$store.state.theme.textColor;
       },
-      set(val) {
+      set(colorValue) {
         this.$store.commit(
-          "TABLE_TEXT_COLOR",
-          val,
-          this.$store.state.activeContent
+          "TABLE_BACKGROUND",
+          colorValue
         );
       },
     },

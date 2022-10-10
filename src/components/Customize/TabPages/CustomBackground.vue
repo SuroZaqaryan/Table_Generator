@@ -2,7 +2,6 @@
   <div>
     <div class="picker-wrapper">
       <div class="sketch">
-        <input type="checkbox" v-model="$store.state.testStatus" />
         <sketch-picker v-model="status" />
       </div>
       <div class="swatches">
@@ -25,11 +24,10 @@ export default {
       get() {
         return this.$store.state.theme.background;
       },
-      set(val) {
+      set(colorValue) {
         this.$store.commit(
           "TABLE_BACKGROUND",
-          val,
-          this.$store.state.activeContent
+          colorValue
         );
       },
     },

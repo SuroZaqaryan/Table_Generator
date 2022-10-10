@@ -4,7 +4,7 @@
       <div
         v-for="(tab, index) in tabSideBar"
         :key="index"
-        @click="$store.state.activeContent = index"
+        @click="$store.state.tableContentValue.tableSidebarValue = index"
         :class="{ active: index === activeItem }"
       >
         <span class="dot" />
@@ -41,7 +41,7 @@ export default {
   },
 
   mounted() {
-    this.$store.state.activeContent = 0;
+    this.$store.state.tableContentValue.tableSidebarValue = 0;
   },
 };
 </script>

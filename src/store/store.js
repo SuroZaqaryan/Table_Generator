@@ -5,9 +5,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    activeContent: "0",
-
-    testStatus: false,
+    tableContentValue: {
+      tableSidebarValue: "0",
+      tableNavbarValue: "Background"
+    },
 
     customizeModalIsShow: false,
 
@@ -92,25 +93,35 @@ export default new Vuex.Store({
       state.styleHeader = { ...val };
       state.styleContent = { ...val };
     },
-    TABLE_BACKGROUND(state, message) {
-      switch (state.activeContent) {
-        case 0:
-          state.styleHeader.background = message;
-          break;
-        case 1:
-          state.styleContent.background = message;
-          break;
-        default:
-          break;
-      }
+    
+    TEST(state, message) {
+      state.styleHeader.weight.borderWeight = message;
     },
-    TABLE_TEXT_COLOR(state, message) {
-      switch (state.activeContent) {
+
+    TABLE_BACKGROUND(state, message) {
+      let tableNavbarValue = state.tableContentValue.tableNavbarValue;
+      switch (state.tableContentValue.tableSidebarValue) {
         case 0:
-          state.styleHeader.textColor = message;
+          if(tableNavbarValue === "Background") {
+            state.styleHeader.background = message;
+          }
+          if(tableNavbarValue === "TextColor") {
+            state.styleHeader.textColor = message;
+          }
+          if(tableNavbarValue === "BorderColor") {
+            state.styleHeader.borderColor = message;
+          }
           break;
         case 1:
-          state.styleContent.textColor = message;
+          if(tableNavbarValue === "Background") {
+            state.styleContent.background = message;
+          }
+          if(tableNavbarValue === "TextColor") {
+            state.styleContent.textColor = message;
+          }
+          if(tableNavbarValue === "BorderColor") {
+            state.styleContent.borderColor = message;
+          }
           break;
         default:
           break;

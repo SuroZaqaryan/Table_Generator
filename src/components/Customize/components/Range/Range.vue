@@ -5,15 +5,37 @@
     </div>
     <div class="border-range">
       <div class="input-range">
-        <input v-if="borderWeightCount" type="number" step="0" v-model="getBorderWeightCount"/>
-        <input v-if="fontWeightCount" type="number" step="100" v-model="getFontWeightCount"/>
+        <input
+          v-if="borderWeightCount"
+          type="number"
+          step="0"
+          v-model="getBorderWeightCount"
+        />
+        <input
+          v-if="fontWeightCount"
+          type="number"
+          step="100"
+          v-model="getFontWeightCount"
+        />
       </div>
       <div class="input-select-range">
-        <input v-if="borderWeightCount" type="range"
-               min="0" max="15" step="1" v-model="getBorderWeightCount">
+        <input
+          v-if="borderWeightCount"
+          type="range"
+          min="0"
+          max="15"
+          step="1"
+          v-model="getBorderWeightCount"
+        />
 
-        <input v-if="fontWeightCount" type="range"
-               min="100" max="900" step="100" v-model="getFontWeightCount">
+        <input
+          v-if="fontWeightCount"
+          type="range"
+          min="100"
+          max="900"
+          step="100"
+          v-model="getFontWeightCount"
+        />
       </div>
     </div>
   </div>
@@ -29,53 +51,61 @@ export default {
       type: Number,
     },
     title: {
-      type: String
-    }
+      type: String,
+    },
   },
 
   computed: {
     getBorderWeightCount: {
       get() {
-        return this.borderWeightCount
+        return this.borderWeightCount;
       },
       set(value) {
-        this.borderWeightCount = value;
-      }
+        //this.$store.state.styleHeader.weight.borderWeight = parseInt(value);
+        //console.log(this.$store.state.tableContentValue.tableSidebarValue)
+        this.$store.commit(
+          "TEST",
+          parseInt(value)
+        );
+        // this.$store.state.styleHeader.weight.borderWeight = parseInt(value)
+      },
     },
     getFontWeightCount: {
       get() {
-        return this.fontWeightCount
+        return this.fontWeightCount;
       },
       set(value) {
         this.fontWeightCount = value;
-      }
+      },
     },
   },
-  data () {
+  data() {
     return {
       borderWeightCount: this.borderWeight,
       fontWeightCount: this.fontWeight,
-    }
+    };
   },
+
   methods: {
     validateBorderCount() {
       this.$store.state.weight.borderWeight = Number(this.borderWeightCount);
       if (this.borderWeightCount > 15) {
-        this.borderWeightCount = 15
+        this.borderWeightCount = 15;
       } else if (this.borderWeightCount < 0) {
-        this.borderWeightCount = 1
+        this.borderWeightCount = 1;
       }
     },
 
     validateFontCount() {
       this.$store.state.weight.fontWeight = Number(this.fontWeightCount);
       if (this.fontWeightCount > 900) {
-        this.fontWeightCount = 900
+        this.fontWeightCount = 900;
       } else if (this.fontWeightCount < 0) {
-        this.fontWeightCount = 100
+        this.fontWeightCount = 100;
       }
     },
   },
+
   watch: {
     borderWeightCount() {
       this.validateBorderCount();
@@ -84,7 +114,7 @@ export default {
       this.validateFontCount();
     },
   },
-}
+};
 </script>
 
 <style scoped>
