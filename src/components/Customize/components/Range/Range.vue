@@ -61,13 +61,7 @@ export default {
         return this.borderWeightCount;
       },
       set(value) {
-        //this.$store.state.styleHeader.weight.borderWeight = parseInt(value);
-        //console.log(this.$store.state.tableContentValue.tableSidebarValue)
-        this.$store.commit(
-          "TEST",
-          parseInt(value)
-        );
-        // this.$store.state.styleHeader.weight.borderWeight = parseInt(value)
+        this.$store.commit("TEST", parseInt(value));
       },
     },
     getFontWeightCount: {

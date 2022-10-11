@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     tableContentValue: {
       tableSidebarValue: "0",
-      tableNavbarValue: "Background"
+      tableNavbarValue: "Background",
     },
 
     customizeModalIsShow: false,
@@ -30,21 +30,6 @@ export default new Vuex.Store({
   },
 
   getters: {
-    style(state) {
-      let style = {
-        background:
-          state.theme.background.hex !== undefined
-            ? state.theme.background.hex
-            : "#f7f7f7",
-        color: state.theme.textColor.hex,
-        fontWeight: state.theme.weight.fontWeight,
-        border: `${state.theme.weight.borderWeight + "px"}
-             ${state.theme.borderStyle}
-             ${state.theme.borderColor.hex}`,
-      };
-      return style;
-    },
-
     contentHeader(state) {
       let style = {
         background:
@@ -86,40 +71,53 @@ export default new Vuex.Store({
     SHOW_CUSTOMIZE_MODAL(state) {
       state.customizeModalIsShow = true;
     },
+
     HIDE_CUSTOMIZE_MODAL(state) {
       state.customizeModalIsShow = false;
     },
+
     OBJECT_CLONE(state, val) {
-      state.styleHeader = { ...val };
-      state.styleContent = { ...val };
+      state.styleHeader = JSON.parse(JSON.stringify(val));
+      state.styleContent = JSON.parse(JSON.stringify(val));
     },
-    
+
     TEST(state, message) {
-      state.styleHeader.weight.borderWeight = message;
+      switch (state.tableContentValue.tableSidebarValue) {
+        case 0:
+          state.styleHeader.weight.borderWeight = message;
+          break;
+
+        case 1:
+          state.styleContent.weight.borderWeight = message;
+          break;
+
+        default:
+          break;
+      }
     },
 
     TABLE_BACKGROUND(state, message) {
       let tableNavbarValue = state.tableContentValue.tableNavbarValue;
       switch (state.tableContentValue.tableSidebarValue) {
         case 0:
-          if(tableNavbarValue === "Background") {
+          if (tableNavbarValue === "Background") {
             state.styleHeader.background = message;
           }
-          if(tableNavbarValue === "TextColor") {
+          if (tableNavbarValue === "TextColor") {
             state.styleHeader.textColor = message;
           }
-          if(tableNavbarValue === "BorderColor") {
+          if (tableNavbarValue === "BorderColor") {
             state.styleHeader.borderColor = message;
           }
           break;
         case 1:
-          if(tableNavbarValue === "Background") {
+          if (tableNavbarValue === "Background") {
             state.styleContent.background = message;
           }
-          if(tableNavbarValue === "TextColor") {
+          if (tableNavbarValue === "TextColor") {
             state.styleContent.textColor = message;
           }
-          if(tableNavbarValue === "BorderColor") {
+          if (tableNavbarValue === "BorderColor") {
             state.styleContent.borderColor = message;
           }
           break;

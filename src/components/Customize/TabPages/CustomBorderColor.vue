@@ -43,10 +43,7 @@ export default {
         return this.$store.state.theme.borderColor;
       },
       set(colorValue) {
-        this.$store.commit(
-          "TABLE_BACKGROUND",
-          colorValue
-        );
+        this.$store.commit("TABLE_BACKGROUND", colorValue);
       },
     },
   },
