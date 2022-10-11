@@ -20,7 +20,7 @@ export default new Vuex.Store({
       },
       borderStyle: "solid",
       weight: {
-        borderWeight: 0.1,
+        borderWeight: 1,
         fontWeight: 100,
       },
     },
@@ -81,7 +81,7 @@ export default new Vuex.Store({
       state.styleContent = JSON.parse(JSON.stringify(val));
     },
 
-    TEST(state, message) {
+    TABLE_BORDER_WEIGHT(state, message) {
       switch (state.tableContentValue.tableSidebarValue) {
         case 0:
           state.styleHeader.weight.borderWeight = message;
@@ -90,13 +90,10 @@ export default new Vuex.Store({
         case 1:
           state.styleContent.weight.borderWeight = message;
           break;
-
-        default:
-          break;
       }
     },
 
-    TABLE_BACKGROUND(state, message) {
+    TABLE_COLOR(state, message) {
       let tableNavbarValue = state.tableContentValue.tableNavbarValue;
       switch (state.tableContentValue.tableSidebarValue) {
         case 0:
@@ -120,8 +117,6 @@ export default new Vuex.Store({
           if (tableNavbarValue === "BorderColor") {
             state.styleContent.borderColor = message;
           }
-          break;
-        default:
           break;
       }
     },

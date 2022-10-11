@@ -12,8 +12,7 @@
         {{ $store.state.styleHeader.background.hex }}
       </p>
       <table>
-        <div v-if="$store.state.customizeModalIsShow" 
-        class="customize-wrapper">
+        <div v-if="$store.state.customizeModalIsShow" class="customize-wrapper">
           <div class="customize-wrapper-is-child">
             <div @click="hideCustomizeModal" class="customize-block">
               <img src="@/assets/Icons/TableGenerator/close.png" alt="" />
@@ -21,8 +20,8 @@
           </div>
         </div>
 
-        <h1 style="background: red">{{$store.state.styleHeader}}</h1>
-        <h1 style="background: orange">{{$store.state.styleContent}}</h1>
+        <h3 style="background: red">{{ $store.state.styleHeader }}</h3>
+        <h3 style="background: orange">{{ $store.state.styleContent }}</h3>
 
         <tr>
           <th
@@ -39,8 +38,11 @@
           v-for="(i, index) in tableRender.y"
           :key="index"
         >
-          <td :style="$store.getters.contentStyle"
-           v-for="(i, index) in tableRender.x" :key="index">
+          <td
+            :style="$store.getters.contentStyle"
+            v-for="(i, index) in tableRender.x"
+            :key="index"
+          >
             {{ i.matrixY }}
             Cell
           </td>

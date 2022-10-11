@@ -6,11 +6,12 @@
     <div class="border-range">
       <div class="input-range">
         <input
-          v-if="borderWeightCount"
           type="number"
           step="0"
-          v-model="getBorderWeightCount"
+          @input="getBorderWeightCount"
+          v-model="borderWeightValue"
         />
+        <p>{{ getFontWeightCount }}</p>
         <input
           v-if="fontWeightCount"
           type="number"
@@ -20,12 +21,12 @@
       </div>
       <div class="input-select-range">
         <input
-          v-if="borderWeightCount"
           type="range"
           min="0"
           max="15"
           step="1"
-          v-model="getBorderWeightCount"
+          @input="getBorderWeightCount"
+          v-model="borderWeightValue"
         />
 
         <input
@@ -44,9 +45,6 @@
 <script>
 export default {
   props: {
-    borderWeight: {
-      type: Number,
-    },
     fontWeight: {
       type: Number,
     },
@@ -56,18 +54,11 @@ export default {
   },
 
   computed: {
-    getBorderWeightCount: {
-      get() {
-        return this.borderWeightCount;
-      },
-      set(value) {
-        this.$store.commit("TEST", parseInt(value));
-      },
-    },
     getFontWeightCount: {
       get() {
         return this.fontWeightCount;
       },
+
       set(value) {
         this.fontWeightCount = value;
       },
@@ -75,18 +66,25 @@ export default {
   },
   data() {
     return {
-      borderWeightCount: this.borderWeight,
+      borderWeightValue: 1,
       fontWeightCount: this.fontWeight,
     };
   },
 
   methods: {
+    getBorderWeightCount(e) {
+      this.borderWeightValue = e.target.value;
+      this.$store.commit(
+        "TABLE_BORDER_WEIGHT",
+        parseInt(this.borderWeightValue)
+      );
+    },
+
     validateBorderCount() {
-      this.$store.state.weight.borderWeight = Number(this.borderWeightCount);
-      if (this.borderWeightCount > 15) {
-        this.borderWeightCount = 15;
-      } else if (this.borderWeightCount < 0) {
-        this.borderWeightCount = 1;
+      if (this.borderWeightValue > 15) {
+        this.borderWeightValue = 15;
+      } else if (this.borderWeightValue < 0 || this.borderWeightValue === "") {
+        this.borderWeightValue = 1;
       }
     },
 
@@ -101,9 +99,10 @@ export default {
   },
 
   watch: {
-    borderWeightCount() {
+    borderWeightValue() {
       this.validateBorderCount();
     },
+
     fontWeightCount() {
       this.validateFontCount();
     },

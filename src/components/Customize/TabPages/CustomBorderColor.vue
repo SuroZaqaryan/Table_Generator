@@ -15,10 +15,7 @@
           </div>
         </div>
         <hr class="line" />
-        <Range
-          title="Border Weight"
-          :borderWeight="$store.state.theme.weight.borderWeight"
-        />
+        <Range title="Border Weight" />
       </div>
     </div>
   </div>
@@ -43,7 +40,7 @@ export default {
         return this.$store.state.theme.borderColor;
       },
       set(colorValue) {
-        this.$store.commit("TABLE_BACKGROUND", colorValue);
+        this.$store.commit("TABLE_COLOR", colorValue);
       },
     },
   },

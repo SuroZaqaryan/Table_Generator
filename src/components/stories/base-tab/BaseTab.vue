@@ -5,7 +5,7 @@
         <div
           v-for="(item, index) in tab"
           :key="index"
-          @click="selectItem(index, item)"
+          @click="selectItem(index)"
           class="tab-article"
           :class="{ active: index === activeItem }"
         >
@@ -44,12 +44,11 @@ export default {
     };
   },
   methods: {
-    selectItem(i, item) {
-      console.log('item is: ', item)
+    selectItem(i) {
       this.activeItem = i;
     },
     tabActive(page, value) {
-      this.$store.state.tableContentValue.tableNavbarValue = value
+      this.$store.state.tableContentValue.tableNavbarValue = value;
       this.activePage = page;
     },
   },

@@ -25,10 +25,7 @@ export default {
         return this.$store.state.theme.background;
       },
       set(colorValue) {
-        this.$store.commit(
-          "TABLE_BACKGROUND",
-          colorValue
-        );
+        this.$store.commit("TABLE_COLOR", colorValue);
       },
     },
   },
