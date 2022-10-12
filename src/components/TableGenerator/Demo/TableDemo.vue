@@ -1,10 +1,10 @@
 <template>
   <div style="background: #20212a; position: relative; height: 100%">
     <div
-      v-show="false"
-      class="generated-table-of-child"
-      :class="{ 'tr-expectation': isCustomize }"
-      ref="tableCode"
+        v-show="false"
+        class="generated-table-of-child"
+        :class="{ 'tr-expectation': isCustomize }"
+        ref="tableCode"
     >
       <table>
         <tr>
@@ -28,8 +28,9 @@
         <div class="syntax-snippet-title">
           <div class="syntax-snippet-title-icon">
             <img
-              width="30"
-              src="https://img.icons8.com/color/48/000000/html-5--v1.png"
+                width="30"
+                src="https://img.icons8.com/color/48/000000/html-5--v1.png"
+                alt="html"
             />
           </div>
           <div>
@@ -37,7 +38,7 @@
           </div>
         </div>
 
-        <codemirror v-model="codeValue" :options="cmOptionHtml" />
+        <codemirror v-model="codeValue" :options="cmOptionHtml"/>
       </div>
 
       <!-- CSS -->
@@ -45,15 +46,16 @@
         <div class="syntax-snippet-title">
           <div class="syntax-snippet-title-icon">
             <img
-              width="30"
-              src="https://img.icons8.com/color/48/000000/css3.png"
+                width="30"
+                src="https://img.icons8.com/color/48/000000/css3.png"
+                alt="css"
             />
           </div>
           <div>
             <h3>CSS</h3>
           </div>
         </div>
-        <codemirror v-model="getCss" :options="comOptionCss" />
+        <codemirror v-model="getCss" :options="comOptionCss"/>
       </div>
     </div>
   </div>
@@ -62,7 +64,7 @@
 <script>
 import dedent from "dedent";
 // codemirror
-import { codemirror } from "vue-codemirror";
+import {codemirror} from "vue-codemirror";
 // language
 import "codemirror/mode/xml/xml.js"; // HTML
 import "codemirror/mode/css/css.js"; // CSS
@@ -91,10 +93,6 @@ export default {
     codemirror,
   },
 
-  created() {
-    console.log("333", this.$store.getters);
-  },
-
   computed: {
     getCss: {
       get() {
@@ -103,33 +101,41 @@ export default {
         margin: ${this.$store.state.background};
         padding: 3em 6em;
       }
+
       table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
         width: 100%;
       }
+
       td,
       th {
           text-align: left;
           padding: 8px;
           border: 0.1px solid black;
       }
+
       .tr-expectation {
           opacity: 0.7;
           pointer-events: none;
           color: ${this.$store.getters.contentStyle.color};
       }
+
       .tr-expectation > td {
           border: 0.1px solid #aeaeae;
       }
+
       tr:nth-child(even) {
           background-color: #dddddd;
       }
+
       table tr > th {
           text-align: center;
           background-color: ${this.$store.getters.contentHeader.background};
           color: ${this.$store.getters.contentHeader.color};
+          font-weight: ${this.$store.getters.contentHeader.fontWeight};
       }
+
       .tab-title {
           position: relative;
       }

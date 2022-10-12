@@ -20,8 +20,8 @@
           </div>
         </div>
 
-        <h3 style="background: red">{{ $store.state.styleHeader }}</h3>
-        <h3 style="background: orange">{{ $store.state.styleContent }}</h3>
+<!--        <h3 style="background: red">{{ $store.state.styleHeader }}</h3>-->
+<!--        <h3 style="background: orange">{{ $store.state.styleContent }}</h3>-->
 
         <tr>
           <th

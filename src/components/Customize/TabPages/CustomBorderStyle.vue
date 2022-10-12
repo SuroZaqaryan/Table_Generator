@@ -21,12 +21,16 @@
 <script>
 export default {
   methods: {
-    selectItem(i, styleType) {
-      console.log('>>>', styleType)
-      this.$store.state.borderStyle = styleType;
+    selectItem(i, borderStyle) {
       this.activeItem = i;
+
+      this.$store.commit(
+          "TABLE_BORDER_STYLE",
+          borderStyle
+      );
     },
   },
+
   data() {
     return {
       activeItem: null,

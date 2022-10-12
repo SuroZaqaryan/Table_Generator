@@ -1,41 +1,46 @@
 <template>
   <div class="custom-border-wrapper">
+
     <div class="border-title">
       <h3>{{ title }}</h3>
     </div>
+
     <div class="border-range">
       <div class="input-range">
         <input
-          type="number"
-          step="0"
-          @input="getBorderWeightCount"
-          v-model="borderWeightValue"
+            v-if="$store.state.tableContentValue.tableNavbarValue === 'BorderColor'"
+            type="number"
+            step="0"
+            @input="getBorderWeightCount"
+            v-model="borderWeightValue"
         />
-        <p>{{ getFontWeightCount }}</p>
         <input
-          v-if="fontWeightCount"
-          type="number"
-          step="100"
-          v-model="getFontWeightCount"
+            v-if="$store.state.tableContentValue.tableNavbarValue === 'TextColor'"
+            type="number"
+            step="100"
+            @input="getFontWeightCount"
+            v-model="fontWeightValue"
         />
       </div>
+
       <div class="input-select-range">
         <input
-          type="range"
-          min="0"
-          max="15"
-          step="1"
-          @input="getBorderWeightCount"
-          v-model="borderWeightValue"
+            v-if="$store.state.tableContentValue.tableNavbarValue === 'BorderColor'"
+            type="range"
+            min="0"
+            max="15"
+            step="1"
+            @input="getBorderWeightCount"
+            v-model="borderWeightValue"
         />
-
         <input
-          v-if="fontWeightCount"
-          type="range"
-          min="100"
-          max="900"
-          step="100"
-          v-model="getFontWeightCount"
+            v-if="$store.state.tableContentValue.tableNavbarValue === 'TextColor'"
+            type="range"
+            min="100"
+            max="900"
+            step="100"
+            @input="getFontWeightCount"
+            v-model="fontWeightValue"
         />
       </div>
     </div>
@@ -45,38 +50,42 @@
 <script>
 export default {
   props: {
-    fontWeight: {
-      type: Number,
-    },
     title: {
       type: String,
     },
   },
 
-  computed: {
-    getFontWeightCount: {
-      get() {
-        return this.fontWeightCount;
-      },
-
-      set(value) {
-        this.fontWeightCount = value;
-      },
-    },
-  },
   data() {
     return {
       borderWeightValue: 1,
-      fontWeightCount: this.fontWeight,
+      fontWeightValue: 100,
     };
+  },
+
+  watch: {
+    borderWeightValue() {
+      this.validateBorderCount();
+    },
+
+    fontWeightValue() {
+      this.validateFontCount();
+    },
   },
 
   methods: {
     getBorderWeightCount(e) {
       this.borderWeightValue = e.target.value;
       this.$store.commit(
-        "TABLE_BORDER_WEIGHT",
-        parseInt(this.borderWeightValue)
+          "TABLE_BORDER_WEIGHT",
+          parseInt(this.borderWeightValue)
+      );
+    },
+
+    getFontWeightCount(e) {
+      this.fontWeightValue = e.target.value;
+      this.$store.commit(
+          "TABLE_FONT_WEIGHT",
+          parseInt(this.fontWeightValue)
       );
     },
 
@@ -89,22 +98,11 @@ export default {
     },
 
     validateFontCount() {
-      this.$store.state.weight.fontWeight = Number(this.fontWeightCount);
-      if (this.fontWeightCount > 900) {
-        this.fontWeightCount = 900;
-      } else if (this.fontWeightCount < 0) {
-        this.fontWeightCount = 100;
+      if (this.fontWeightValue > 900) {
+        this.fontWeightValue = 900;
+      } else if (this.fontWeightValue < 0) {
+        this.fontWeightValue = 100;
       }
-    },
-  },
-
-  watch: {
-    borderWeightValue() {
-      this.validateBorderCount();
-    },
-
-    fontWeightCount() {
-      this.validateFontCount();
     },
   },
 };

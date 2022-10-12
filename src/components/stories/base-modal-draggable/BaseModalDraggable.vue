@@ -1,23 +1,29 @@
 <template>
   <transition name="fade">
     <div
-      v-if="$store.state.customizeModalIsShow"
-      ref="draggableContainer"
-      id="draggable-container"
-      class="container"
+        v-if="$store.state.customizeModalIsShow"
+        ref="draggableContainer"
+        id="draggable-container"
+        class="container"
     >
       <div class="modal">
-        <div @click="hideCustomizeModal" class="close-modal">
-          <img
-            width="25"
-            style="display: flex"
-            src="https://i.ibb.co/gyT5JFh/icons8-multiply-100.png"
-            alt=""
-          />
+
+        <div class="navbar-settings">
+          <div>
+            <button>Click me</button>
+          </div>
+          <div @click="hideCustomizeModal" class="close-modal">
+            <img
+                width="25"
+                style="display: flex"
+                src="https://i.ibb.co/gyT5JFh/icons8-multiply-100.png"
+                alt=""
+            />
+          </div>
         </div>
         <div class="navbar">
-          <SideBar :dragMouseDown="dragMouseDown" />
-          <BaseTab :tab="tab" :dragMouseDown="dragMouseDown" />
+          <SideBar :dragMouseDown="dragMouseDown"/>
+          <BaseTab :tab="tab" :dragMouseDown="dragMouseDown"/>
         </div>
       </div>
     </div>
@@ -69,13 +75,13 @@ export default {
       this.positions.clientY = event.clientY;
       // set the element's new position:
       this.$refs.draggableContainer.style.top =
-        this.$refs.draggableContainer.offsetTop -
-        this.positions.movementY +
-        "px";
+          this.$refs.draggableContainer.offsetTop -
+          this.positions.movementY +
+          "px";
       this.$refs.draggableContainer.style.left =
-        this.$refs.draggableContainer.offsetLeft -
-        this.positions.movementX +
-        "px";
+          this.$refs.draggableContainer.offsetLeft -
+          this.positions.movementX +
+          "px";
     },
     closeDragElement() {
       document.onmouseup = null;
@@ -86,14 +92,15 @@ export default {
 </script>
 
 <style scoped>
-.navbar {
+.navbar,
+.navbar-settings {
   display: flex;
 }
-.close-modal {
-  position: absolute;
-  top: 5px;
-  right: 10px;
+
+.navbar-settings {
+  justify-content: flex-end;
 }
+
 </style>
 
 <style>
@@ -102,7 +109,8 @@ export default {
   transition: opacity 0.2s;
 }
 
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+{
   opacity: 0;
 }
 

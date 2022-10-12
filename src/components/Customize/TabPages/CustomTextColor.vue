@@ -15,10 +15,7 @@
           </div>
         </div>
         <hr class="line" />
-        <Range
-          title="Font Weight"
-          :fontWeight="this.$store.state.styleHeader.weight.fontWeight"
-        />
+        <Range title="Font Weight" />
       </div>
     </div>
   </div>

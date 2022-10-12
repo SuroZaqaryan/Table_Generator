@@ -5,11 +5,11 @@
         <div
           v-for="(item, index) in tab"
           :key="index"
-          @click="selectItem(index)"
+          @click="selectItem(index), tabActive(item.page, item.value)"
           class="tab-article"
           :class="{ active: index === activeItem }"
         >
-          <p @click="tabActive(item.page, item.value)">{{ item.title }}</p>
+          <p>{{ item.title }}</p>
         </div>
       </div>
       <template v-if="!activePage">

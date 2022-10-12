@@ -8,6 +8,7 @@ import CustomBackground from "./TabPages/CustomBackground.vue";
 import CustomTextColor from "./TabPages/CustomTextColor.vue";
 import CustomBorderColor from "./TabPages/CustomBorderColor.vue";
 import CustomBorderStyle from "./TabPages/CustomBorderStyle.vue";
+import CustomTableEventColor from "./TabPages/CustomTableEvenColor"
 
 export default {
   components: {
@@ -36,6 +37,11 @@ export default {
           title: "Border Style",
           page: CustomBorderStyle,
           value: "BorderStyle",
+        },
+        {
+          title: "Even Color",
+          page: CustomTableEventColor,
+          value: "EvenColor",
         },
       ],
     };
